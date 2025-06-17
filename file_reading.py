@@ -20,13 +20,14 @@ for filepath in final_filepaths:
         file_records = content.split('\n')
         for record in file_records:
             record.split(',')
+            final_results.append(record)
 
 print(f"Folder Opened: ")
 print(f"'{folder_path}'")
-
 print("Number of files: ")
 print(f"{no_of_files} files found.")
 
 print("Records: ")
 for record in final_results:
-    print(record)
+    print("--------------------------------------------------------------[")
+    print(f"|| {i} ||" for i in record)
