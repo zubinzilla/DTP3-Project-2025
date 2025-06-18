@@ -16,11 +16,10 @@ with os.scandir(folder_path) as folder:
 # processes the data of each file
 for filepath in final_filepaths:
     with open(filepath, "r") as file:
-        content = file.read()
-        file_records = content.split('\n')
+        content = file.read() # would represent string data
+        file_records = content.split('\n') # splits content into array of records
         for record in file_records:
-            record.split(',')
-            final_results.append(record)
+            final_results.append(record.split(","))
 
 print(f"Folder Opened: ")
 print(f"'{folder_path}'")
@@ -29,5 +28,4 @@ print(f"{no_of_files} files found.")
 
 print("Records: ")
 for record in final_results:
-    print("--------------------------------------------------------------[")
-    print(f"|| {i} ||" for i in record)
+    print(record)
