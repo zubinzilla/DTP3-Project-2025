@@ -18,8 +18,12 @@ for filepath in final_filepaths:
     with open(filepath, "r") as file:
         content = file.read() # would represent string data
         file_records = content.split('\n') # splits content into array of records
+        file_records.pop(0)
         for record in file_records:
-            final_results.append(record.split(","))
+            if len(record) == 0:
+                file_records.pop(file_records.index(record))
+            else:
+                final_results.append(record.split(","))
 
 print(f"Folder Opened: ")
 print(f"'{folder_path}'")
