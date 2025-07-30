@@ -44,7 +44,26 @@ else:
         print(f"{no_of_files} files found.")
 
         print("Records: ")
+
+        n=0
+        print(len(final_results))
+
+
         for record in final_results:
-            print(record)
+            #filters only for placings and regional association
+            updated_record = [record[2], record[5]]
+            record[:] = updated_record
+            del updated_record
+
+
+
+
+
+
+
+
+
+
+
     else:
         print("No corresponding folder exists for that year.")
