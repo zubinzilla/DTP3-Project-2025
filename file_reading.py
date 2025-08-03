@@ -1,17 +1,17 @@
 import os
-from check_filepath import target_year
+from GUI import GUI_status
 
+file_read_status = 0
 
-# no valid target year found (0 as default value)
-if target_year == 0:
-    print("No valid year.")
+# no error occured
+if GUI_status == 0:
+    # no valid target year found (0 as default value)
+    from GUI import target_year
 
-# valid target year found
-else:
     folder_path = "C:/Users/Lenovo/Downloads/dtpAssignmentResources/3.7B resource files/3.7B resource files/WakaNats" + str(
         target_year)
 
-    # checks if folderpath exists
+    # if folder path exists
     if os.path.isdir(folder_path):
 
         final_filepaths = []
@@ -38,32 +38,14 @@ else:
                     else:
                         final_results.append(record.split(","))
 
-        print(f"Folder Opened: ")
-        print(f"'{folder_path}'")
-        print("Number of files: ")
-        print(f"{no_of_files} files found.")
-
-        print("Records: ")
-
-        n=0
-        print(len(final_results))
-
-
+        # strips records to only contain regional association and placing
         for record in final_results:
-            #filters only for placings and regional association
             updated_record = [record[2], record[5]]
             record[:] = updated_record
             del updated_record
 
 
-
-
-
-
-
-
-
-
-
+        file_read_status = 0
     else:
-        print("No corresponding folder exists for that year.")
+        file_read_status = 1
+
