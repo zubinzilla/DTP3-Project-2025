@@ -30,6 +30,8 @@ if file_read_status == 0 and GUI_status == 0:
     # sorts regional associations by points, descending order
     sorted_totals = list(sorted(regional_totals.items(), key=lambda result: result[1], reverse=True))
 
+
+
     # adding place equivalents for points
 
     final_sorted_results = []
@@ -38,15 +40,18 @@ if file_read_status == 0 and GUI_status == 0:
     num_tied = 0  # count how many tied at previous place
 
     for index, (name, points) in enumerate(sorted_totals):
-        if points == prev_points:
-            # same points as previous → place stays the same
-            num_tied += 1
-        else:
-            # new points → increment place by number of tied teams previously
-            current_place = current_place + num_tied + 1
-            num_tied = 0  # reset tie count for new points
-        final_sorted_results.append((current_place, name, points))
-        prev_points = points
+
+        # excludes any blank records
+        if len(name) > 0:
+            if points == prev_points:
+                # same points as previous → place stays the same
+                num_tied += 1
+            else:
+                # new points → increment place by number of tied teams previously
+                current_place = current_place + num_tied + 1
+                num_tied = 0  # reset tie count for new points
+            final_sorted_results.append((current_place, name, points))
+            prev_points = points
 
     # Print results
     for place, name, points in final_sorted_results:
