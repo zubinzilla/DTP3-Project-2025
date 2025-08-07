@@ -64,6 +64,7 @@ def valid_inputs():
         GUI_status = 0
     else:
         GUI_status = 1
+    app.destroy()
 
 
 
@@ -115,6 +116,9 @@ points_button.place(x=max_x, y=400)
 
 analyze_button.place(x=350, y=500)
 analyze_info.place(x=70, y=540)
+
+
+
 
 
 app.mainloop()
