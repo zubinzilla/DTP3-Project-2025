@@ -1,15 +1,25 @@
+from tkinter.filedialog import askdirectory
+
 from customtkinter import *
 import tkinter as tk
+
+
+# allow the user to select the folder that WakaNats is in
 
 # final value sent to 'file_reading.py' to be analyzed
 target_year = None
 maximum_points = None
+directory = None
 
 GUI_status = 0
 
 analy_x = 100
 max_x = 600
 y_increment = 70
+
+def fetch_folder():
+    global directory
+    directory = askdirectory()
 
 # fetches maximum points for a year's race
 def max_score():
@@ -103,6 +113,9 @@ analyze_button = CTkButton(master=app, text="Analyse year", width=200, command=v
 
 analyze_info = CTkLabel(master=app, text="NOTE: You must enter BOTH the maximum number of points (points 1st place gets PER RACE)\n AND the year you want to analyze BEFORE you press the analyze button. To enter, ensure you press both enter buttons\n Otherwise, error will occur.", font=("Arial", 14), text_color="#fc0303")
 
+select_folder_button = CTkButton(master=app, text="Select the folder all WakaNats folders are stored in.", command=fetch_folder)
+
+
 # places all widgets on screen
 main_label.place(x=analy_x-40, y=280)
 response_label.place(x=analy_x-25, y=320)
@@ -116,6 +129,8 @@ points_button.place(x=max_x, y=400)
 
 analyze_button.place(x=350, y=500)
 analyze_info.place(x=70, y=540)
+
+select_folder_button.place(x=300, y=100)
 
 
 

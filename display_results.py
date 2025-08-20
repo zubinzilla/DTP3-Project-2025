@@ -71,7 +71,7 @@ if __name__ == "__main__":
                     "GUI Error: Year value and max points value were invalid or was not entered before analyzing.")
             elif file_read_status != 0:
                 error_list.append(
-                    "File Reading Error: The folderpath for the Waka Ama game selected does not exist on the system.")
+                    "File Reading Error: The folder you selected does not contain the WakaNats folder you are searching for.")
             elif calculate_points_status != 0:
                 error_list.append("Calculating points Error: There was an error during calculating points.")
 

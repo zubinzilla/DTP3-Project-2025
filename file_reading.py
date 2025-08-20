@@ -1,6 +1,6 @@
 import os
 
-from GUI import maximum_points, GUI_status
+from GUI import maximum_points, GUI_status, directory
 file_read_status = None
 
 print(maximum_points, type(maximum_points))
@@ -37,8 +37,8 @@ if GUI_status == 0:
     # no valid target year found (0 as default value)
     from GUI import target_year
 
-    folder_path = "C:/Users/Lenovo/Downloads/dtpAssignmentResources/3.7B resource files/3.7B resource files/WakaNats" + str(
-        target_year)
+    folder_path = str(directory) + ("/WakaNats" + str(
+        target_year))
 
     # if folder path exists
     if os.path.isdir(folder_path):
@@ -57,28 +57,30 @@ if GUI_status == 0:
 
         # processes the data of each file
         for filepath in final_filepaths:
-
+            try:
             # filepath > heat
-            with open(filepath, "r") as file:
-                content = file.read() # would represent string data
-                heat_records = content.split('\n')
-                # splits content into array of records
-                heat_records.pop(0)
+                with open(filepath, "r") as file:
+                    content = file.read() # would represent string data
+                    heat_records = content.split('\n')
+                    # splits content into array of records
+                    heat_records.pop(0)
 
-                updated_list = []
+                    updated_list = []
 
-                for record in heat_records:
-                    results = record.split(',')
-                    if len(record) != 0:
-                        updated_list.append([results[5], convert_time(results[6])])
+                    for record in heat_records:
+                        results = record.split(',')
+                        if len(record) != 0:
+                            updated_list.append([results[5], convert_time(results[6])])
 
 
-                    # sort by elapsed time
-                sorted_results = sorted(updated_list, key=lambda x: x[1])
-                # awards points and adds to the array with all records
-                all_records.append(award_points(sorted_results, maximum_points))
+                        # sort by elapsed time
+                    sorted_results = sorted(updated_list, key=lambda x: x[1])
+                    # awards points and adds to the array with all records
+                    all_records.append(award_points(sorted_results, maximum_points))
 
-        file_read_status = 0
+                file_read_status = 0
+            except:
+                file_read_status = 1
     else:
         file_read_status = 1
 
