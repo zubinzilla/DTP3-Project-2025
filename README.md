@@ -7,6 +7,7 @@ GUI.py
 calculate_points.py
 file_reading.py
 display_results.py
+READ_ME.md
 
 Run the program from display_results.py. Read the instructions on the GUI screen. After you have entered a folder where all the WakaNats folders are stored, the year of the WakaNats game you want to analyze and a valid number of maximum points and press the analyze button, close the window and you will see the results window.
 
